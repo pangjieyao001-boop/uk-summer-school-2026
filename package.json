@@ -1,0 +1,13 @@
+{
+  "name": "uk-summer-school-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pang Jieyao UK Summer School 2026 travel companion with live place search",
+  "scripts": {
+    "dev": "wrangler pages dev . --compatibility-date=2024-06-22",
+    "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^3.60.0"
+  }
+}

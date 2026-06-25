@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2EC4B6">
+  <title data-i18n="meta.title">Pang Jieyao · UK Summer School 2026</title>
+  <meta name="description" content="Pang Jieyao 专属 2026 英国牛津夏校行程助手：日程、攻略、交通、机票注意事项与深圳湾赴港机场时间规划。" data-i18n-attr="content" data-i18n="meta.desc">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="icon" type="image/png" href="assets/icon-192.png">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand__logo">🌍</span>
+        <div>
+          <h1 class="brand__title" data-i18n="brand.title">我的英国行程</h1>
+          <p class="brand__subtitle" data-i18n="brand.subtitle">牛津夏校 · 2026</p>
+        </div>
+      </div>
+      <button id="searchToggle" class="search-toggle" aria-label="Search places">
+        <span>🔍</span>
+      </button>
+      <button id="langToggle" class="lang-toggle" aria-label="Switch language">
+        <span class="lang-toggle__dot"></span>
+        <span class="lang-toggle__label" data-i18n="lang.label">EN</span>
+      </button>
+    </header>
+
+    <main class="main" id="main">
+      <!-- 行程 / Itinerary -->
+      <section class="page page--active" id="page-home">
+        <div class="hero">
+          <div class="hero__bg" aria-hidden="true"></div>
+          <div class="hero__content">
+            <span class="hero__tag" data-i18n="hero.tag">LINGNAN × HERTFORD</span>
+            <h2 class="hero__title" data-i18n="hero.title">牛津大学赫特福德学院<br>研究生暑期学校</h2>
+            <p class="hero__date" data-i18n="hero.date">2026.06.28 – 07.12</p>
+            <div class="hero__countdown" id="countdown">
+              <span data-i18n="hero.countdown">距离出发还有</span>
+              <strong id="countdownDays">--</strong>
+              <span data-i18n="hero.days">天</span>
+            </div>
+          </div>
+          <div class="hero__card">
+            <div class="hero__stat">
+              <span class="hero__stat-num">13</span>
+              <span class="hero__stat-label" data-i18n="hero.statDays">天行程</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num">🇬🇧</span>
+              <span class="hero__stat-label" data-i18n="hero.statPlace">牛津</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-num">✈️</span>
+              <span class="hero__stat-label" data-i18n="hero.statFlights">2 段飞行</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-fab">
+          <a href="#flight-notes" class="quick-fab__btn" data-tab="transport">
+            <span>✈️</span>
+            <small data-i18n="quick.flight">机票须知</small>
+          </a>
+          <a href="#shenzhen" class="quick-fab__btn" data-tab="transport">
+            <span>🚌</span>
+            <small data-i18n="quick.port">口岸规划</small>
+          </a>
+          <a href="#accommodation" class="quick-fab__btn" data-tab="guide">
+            <span>🏠</span>
+            <small data-i18n="quick.stay">住宿指南</small>
+          </a>
+          <a href="#packing" class="quick-fab__btn" data-tab="notes">
+            <span>🧳</span>
+            <small data-i18n="quick.pack">行李清单</small>
+          </a>
+        </div>
+
+        <div class="section-header">
+          <h3 data-i18n="itinerary.title">每日行程</h3>
+          <span class="section-header__hint" data-i18n="itinerary.hint">点击卡片查看详情</span>
+        </div>
+
+        <div class="timeline" id="timeline"></div>
+
+        <div class="image-card" id="itineraryImageCard">
+          <img src="assets/itinerary.png" alt="官方行程表" loading="lazy">
+          <div class="image-card__cap">
+            <span data-i18n="itinerary.original">官方行程表原图</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 攻略 / Guide -->
+      <section class="page" id="page-guide">
+        <div class="section-hero section-hero--guide">
+          <h2 data-i18n="guide.title">牛津 & 周边攻略</h2>
+          <p data-i18n="guide.subtitle">住在 Abingdon House，玩转牛津与英格兰乡村</p>
+        </div>
+
+        <div class="guide-grid" id="guideGrid"></div>
+
+        <div class="card" id="accommodation">
+          <div class="card__header">
+            <span class="card__icon">🏠</span>
+            <h3 data-i18n="guide.accommodation.title">住宿指南 · Abingdon House</h3>
+          </div>
+          <div class="card__body" data-i18n-html="guide.accommodation.body"></div>
+        </div>
+
+        <div class="card" id="oxford-mustsee">
+          <div class="card__header">
+            <span class="card__icon">🎓</span>
+            <h3 data-i18n="guide.mustsee.title">牛津必打卡</h3>
+          </div>
+          <div class="card__body" data-i18n-html="guide.mustsee.body"></div>
+        </div>
+
+        <div class="card" id="oxford-map">
+          <div class="card__header">
+            <span class="card__icon">🗺️</span>
+            <h3 data-i18n="guide.map.title">牛津地图</h3>
+          </div>
+          <div class="card__body" id="oxfordMapContainer"></div>
+        </div>
+
+        <div class="card" id="day-trips">
+          <div class="card__header">
+            <span class="card__icon">🚐</span>
+            <h3 data-i18n="guide.daytrips.title">周末 & 自由日周边游</h3>
+          </div>
+          <div class="card__body" data-i18n-html="guide.daytrips.body"></div>
+        </div>
+
+        <div class="card" id="food">
+          <div class="card__header">
+            <span class="card__icon">🍽️</span>
+            <h3 data-i18n="guide.food.title">吃喝 & 生活</h3>
+          </div>
+          <div class="card__body" data-i18n-html="guide.food.body"></div>
+        </div>
+      </section>
+
+      <!-- 交通 / Transport -->
+      <section class="page" id="page-transport">
+        <div class="section-hero section-hero--transport">
+          <h2 data-i18n="transport.title">交通 & 机票</h2>
+          <p data-i18n="transport.subtitle">航班、机场接驳、牛津当地交通一键掌握</p>
+        </div>
+
+        <div class="card flight-card">
+          <div class="card__header">
+            <span class="card__icon">✈️</span>
+            <h3 data-i18n="transport.flight.title">国泰航空 · 团体机票</h3>
+          </div>
+          <div class="flight-card__body">
+            <div class="flight-leg">
+              <div class="flight-leg__code">CX255</div>
+              <div class="flight-leg__route">
+                <div><strong>HKG</strong><small>Terminal 1</small></div>
+                <div class="flight-leg__arrow">→</div>
+                <div><strong>LHR</strong><small>Terminal 3</small></div>
+              </div>
+              <div class="flight-leg__time">
+                <span>28 Jun 23:15</span>
+                <span>→</span>
+                <span>29 Jun 06:20</span>
+              </div>
+              <div class="flight-leg__meta" data-i18n="transport.flight.outMeta">经济舱 62K · 飞行约 14h05m</div>
+            </div>
+            <div class="flight-leg">
+              <div class="flight-leg__code">CX250</div>
+              <div class="flight-leg__route">
+                <div><strong>LHR</strong><small>Terminal 3</small></div>
+                <div class="flight-leg__arrow">→</div>
+                <div><strong>HKG</strong><small>Terminal 1</small></div>
+              </div>
+              <div class="flight-leg__time">
+                <span>11 Jul 18:20</span>
+                <span>→</span>
+                <span>12 Jul 14:10</span>
+              </div>
+              <div class="flight-leg__meta" data-i18n="transport.flight.inMeta">经济舱 65K · 飞行约 12h50m</div>
+            </div>
+            <div class="flight-card__info">
+              <p><span data-i18n="transport.flight.refLabel">订位编号</span>：<code>FEGYM8</code></p>
+              <p><span data-i18n="transport.flight.ticketLabel">机票号码</span>：<code>1602133036517</code></p>
+              <p><span data-i18n="transport.flight.baggageLabel">行李额</span>：<span data-i18n="transport.flight.baggage">托运 1PC/23kg + 手提 1PC/7kg</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="coach">
+          <div class="card__header">
+            <span class="card__icon">🚌</span>
+            <h3 data-i18n="transport.coach.title">机场 ↔ 牛津 · 大学接驳大巴</h3>
+          </div>
+          <div class="card__body" data-i18n-html="transport.coach.body"></div>
+        </div>
+
+        <div class="card" id="local-transport">
+          <div class="card__header">
+            <span class="card__icon">🚍</span>
+            <h3 data-i18n="transport.local.title">牛津当地交通</h3>
+          </div>
+          <div class="card__body" data-i18n-html="transport.local.body"></div>
+        </div>
+
+        <div class="card" id="shenzhen">
+          <div class="card__header">
+            <span class="card__icon">🛂</span>
+            <h3 data-i18n="transport.shenzhen.title">深圳湾口岸 → 香港机场</h3>
+          </div>
+          <div class="card__body" data-i18n-html="transport.shenzhen.body"></div>
+        </div>
+      </section>
+
+      <!-- 备忘 / Notes -->
+      <section class="page" id="page-notes">
+        <div class="section-hero section-hero--notes">
+          <h2 data-i18n="notes.title">出行备忘</h2>
+          <p data-i18n="notes.subtitle">文件、行李、注意事项、紧急联络</p>
+        </div>
+
+        <div class="card" id="flight-notes">
+          <div class="card__header">
+            <span class="card__icon">🛫</span>
+            <h3 data-i18n="notes.flight.title">出发与抵达注意事项</h3>
+          </div>
+          <div class="card__body" data-i18n-html="notes.flight.body"></div>
+        </div>
+
+        <div class="card" id="documents">
+          <div class="card__header">
+            <span class="card__icon">📄</span>
+            <h3 data-i18n="notes.docs.title">重要文件</h3>
+          </div>
+          <div class="card__body" data-i18n-html="notes.docs.body"></div>
+        </div>
+
+        <div class="card" id="packing">
+          <div class="card__header">
+            <span class="card__icon">🧳</span>
+            <h3 data-i18n="notes.pack.title">行李清单</h3>
+          </div>
+          <div class="card__body" data-i18n-html="notes.pack.body"></div>
+        </div>
+
+        <div class="card" id="contacts">
+          <div class="card__header">
+            <span class="card__icon">📞</span>
+            <h3 data-i18n="notes.contacts.title">紧急联络 & 常用电话</h3>
+          </div>
+          <div class="card__body" data-i18n-html="notes.contacts.body"></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="bottom-nav__item bottom-nav__item--active" data-target="home">
+        <span class="bottom-nav__icon">🗓️</span>
+        <span data-i18n="nav.home">行程</span>
+      </button>
+      <button class="bottom-nav__item" data-target="guide">
+        <span class="bottom-nav__icon">🗺️</span>
+        <span data-i18n="nav.guide">攻略</span>
+      </button>
+      <button class="bottom-nav__item" data-target="transport">
+        <span class="bottom-nav__icon">✈️</span>
+        <span data-i18n="nav.transport">交通</span>
+      </button>
+      <button class="bottom-nav__item" data-target="notes">
+        <span class="bottom-nav__icon">📝</span>
+        <span data-i18n="nav.notes">备忘</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Place search modal -->
+  <div class="modal" id="placeModal" aria-hidden="true">
+    <div class="modal__overlay" data-close-place></div>
+    <div class="modal__sheet modal__sheet--place">
+      <button class="modal__close" data-close-place aria-label="Close">×</button>
+      <div class="modal__hero modal__hero--place">
+        <h2 data-i18n="search.title">🔍 搜索地点</h2>
+        <div class="search-box">
+          <input type="text" id="placeSearchInput" data-i18n-attr="placeholder" data-i18n="search.placeholder" placeholder="输入景点或餐厅，如 Radcliffe Camera">
+          <button id="placeSearchBtn" data-i18n="search.button">搜索</button>
+        </div>
+      </div>
+      <div class="modal__content" id="placeResult"></div>
+    </div>
+  </div>
+
+  <!-- Day detail modal -->
+  <div class="modal" id="dayModal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__sheet">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="modal__hero" id="modalHero"></div>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
